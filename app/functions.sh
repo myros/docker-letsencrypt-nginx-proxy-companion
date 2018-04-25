@@ -10,12 +10,9 @@
 
 function check_nginx_proxy_container_run {
     local _nginx_proxy_container=$(get_nginx_proxy_container)
-    if [[ $(docker_api "/containers/${_nginx_proxy_container}/json" | jq -r '.State.Status') = "running" ]];then
-        return 0
-    fi
 
-    echo "$(date "+%Y/%m/%d %T"), Error: nginx-proxy container ${_nginx_proxy_container}  isn't running." >&2
-    return 1
+        return 0
+
 }
 
 function add_location_configuration {
